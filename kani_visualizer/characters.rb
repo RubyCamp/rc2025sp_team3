@@ -55,9 +55,9 @@ class Character
     when 'turn_left'
       add_angle(-90)
     when 'forward_shortside'
-      add_pos(Math.cos(@radian) * 114.0, Math.sin(@radian) * 114.0)
+      add_pos(Math.cos(@radian) * 71.25, Math.sin(@radian) * 71.25)
     when 'forward_longside'
-      add_pos(Math.cos(@radian) * 114.0, Math.sin(@radian) * 114.0)
+      add_pos(Math.cos(@radian) * 71.25, Math.sin(@radian) * 71.25)
     end
   end
 

@@ -111,7 +111,7 @@ class DistanceServlet < BaseServlet
     query = request.query
     target = parse_target(query)
     if validate(query, [:value])
-      target.instance.movement(query["value"])
+      target.instance.distance(query["value"])
       succeeded(response)
     else
       failed(response)
