@@ -56,7 +56,6 @@ class Character
     #when 'turn_left'
     #  add_angle(-90)
     when 'forword_shortside'
-      puts "来た"
       cos = Math.cos(@radian) * 71.25
       sin = Math.sin(@radian) * 71.25
       add_pos(cos, sin)
