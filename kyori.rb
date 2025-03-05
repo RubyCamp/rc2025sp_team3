@@ -113,6 +113,7 @@ else
   p "ball:#{distance}mm"
   if distance > 300
   #ボールを掴む処理
+  end
 end
 #D->GOAL
 
@@ -128,6 +129,7 @@ else
   p "ball:#{distance}mm"
   if distance > 300
   #ボールを掴む処理
+  end
 end
 #B->GOAL
 
@@ -144,6 +146,7 @@ else
   p "ball:#{distance}mm"
   if distance > 300
   #ボールを掴む処理
+  end
 end
 #A->GOAL
 
