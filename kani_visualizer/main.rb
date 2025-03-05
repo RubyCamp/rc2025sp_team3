@@ -18,7 +18,7 @@ class MainWindow < Gosu::Window
     @kani1 = Kani1.instance
     @kani1.visible = true
     @kani1.set_pos(400, 435)
-    @kani1.set_angle(270)
+    @kani1.set_angle(180)
     @ball = Ball.instance
     @ball.visible = false
 

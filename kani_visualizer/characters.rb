@@ -48,16 +48,24 @@ class Character
 
   # キャラクタの動作ごとに画面上の座標と角度を変更する
   def movement(move, angle)
-    @radian = angle / 180.0 * Math::PI
+    @angle += angle
+    @radian = @angle / 180.0 * Math::PI
     case move
-    when 'turn_right'
-      add_angle(90)
-    when 'turn_left'
-      add_angle(-90)
-    when 'forward_shortside'
-      add_pos(Math.cos(@radian) * 71.25, Math.sin(@radian) * 71.25)
-    when 'forward_longside'
-      add_pos(Math.cos(@radian) * 71.25, Math.sin(@radian) * 71.25)
+    #when 'turn_right'
+    #  add_angle(90)
+    #when 'turn_left'
+    #  add_angle(-90)
+    when 'forword_shortside'
+      puts "来た"
+      cos = Math.cos(@radian) * 71.25
+      sin = Math.sin(@radian) * 71.25
+      add_pos(cos, sin)
+    when 'forword_longside'
+      cos = Math.cos(@radian) * 71.25
+      sin = Math.sin(@radian) * 71.25
+      add_pos(cos, sin)
+    when 'stop'
+      add_pos(0,0)
     end
   end
 
