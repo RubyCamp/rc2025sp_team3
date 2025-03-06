@@ -48,6 +48,10 @@ class PositionServlet < BaseServlet
       case query["op"]
       when "abs"
         target.instance.set_pos(query["x"].to_i, query["y"].to_i)
+        target.instance.set_angle(180)
+        Ball.instance.visible = false
+        Temp1.instance.visible = true
+        Temp2.instance.visible = false
       when "diff"
         target.instance.add_pos(query["x"].to_i, query["y"].to_i)
       end
@@ -97,7 +101,10 @@ class MovementServlet < BaseServlet
     query = request.query
     target = parse_target(query)
     if validate(query, [:string, :value])
-      target.instance.movement(query["string"], query["value"].to_i)
+      Kani1.instance.movement(query["string"], query["value"].to_i)
+      Ball.instance.movement(query["string"], query["value"].to_i)
+      Temp1.instance.movement(query["string"], query["value"].to_i)
+      Temp2.instance.movement(query["string"], query["value"].to_i)
       succeeded(response)
     else
       failed(response)
@@ -111,7 +118,7 @@ class DistanceServlet < BaseServlet
     query = request.query
     target = parse_target(query)
     if validate(query, [:value])
-      target.instance.distance(query["value"])
+      MainWindow.instance.distance(query["value"])
       succeeded(response)
     else
       failed(response)

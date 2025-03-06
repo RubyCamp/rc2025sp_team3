@@ -14,8 +14,11 @@ class Character
     set_image
     @visible = false
     @x = 0
+    $x = 0
     @y = 0
+    $y = 0
     @angle = 0
+    $angle = 0
     @radian = 0
     @distance = 0
   end
@@ -56,26 +59,32 @@ class Character
     #when 'turn_left'
     #  add_angle(-90)
     when 'forword_shortside'
-      cos = Math.cos(@radian) * 25.87
-      sin = Math.sin(@radian) * 25.87
+      cos = Math.cos(@radian) * 80.0
+      sin = Math.sin(@radian) * 80.0
       add_pos(cos, sin)
     when 'forword_longside'
-      cos = Math.cos(@radian) * 25.87
-      sin = Math.sin(@radian) * 25.87
+      cos = Math.cos(@radian) * 115.0
+      sin = Math.sin(@radian) * 115.0
+      add_pos(cos, sin)
+    when 'forword_shortsidehalf'
+      cos = Math.cos(@radian) * 40.0
+      sin = Math.sin(@radian) * 40.0
+      add_pos(cos, sin)
+    when 'forword_longsidehalf'
+      cos = Math.cos(@radian) * 57.5
+      sin = Math.sin(@radian) * 57.5
       add_pos(cos, sin)
     when 'stop'
       add_pos(0,0)
+    when 'ServoClosed'
+      @visible = true
     end
   end
 
-  # キャラクタとボールの距離情報を画面上に表示する
-  def distance(distance)
-    @font.draw_text(distance, 10, 10, 0, 1.0, 1.0, 0xff_ff0000)
-  end
 
   # キャラクタ画像をウィンドウに描画
   def draw
-    @image.draw_rot(@x, @y, 0, @angle)
+    @image.draw_rot($x, $y, 0, $angle)
   end
 
   private
@@ -87,9 +96,16 @@ class Character
   end
 end
 
-# 視覚化対象クラス（蟹ロボ1台目）
-# ※ 本サンプルでは１台のみ表示するためKani2は作らない。
+# 視覚化対象クラス（蟹ロボ）
 class Kani1 < Character
+
+  def draw
+    $angle = @angle
+    $x = @x
+    $y = @y
+    @image.draw_rot($x, $y, 0, $angle)
+  end
+
   private
 
   # 蟹ロボの固有画像を設定するようオーバーライド
@@ -105,5 +121,28 @@ class Ball < Character
   # ボールの固有画像を設定するようオーバーライド
   def set_image
     @image = Gosu::Image.new("images/ball.png")
+  end
+end
+
+class Temp1 < Character
+  def movement(move, angle)
+    if move == 'ServoClosed'
+      @visible = false
+    end
+  end
+  private
+
+  # テープの固有画像を設定するようオーバーライド
+  def set_image
+    @image = Gosu::Image.new("images/temp1.png")
+  end
+end
+
+class Temp2 < Character
+  private
+
+  # ボールの固有画像を設定するようオーバーライド
+  def set_image
+    @image = Gosu::Image.new("images/temp2.png")
   end
 end

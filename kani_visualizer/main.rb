@@ -1,3 +1,4 @@
+require 'singleton'
 require 'gosu'
 
 require_relative 'server'
@@ -5,6 +6,7 @@ require_relative 'characters'
 
 # ゲームのメインウィンドウ（メインループ）用クラス
 class MainWindow < Gosu::Window
+  include Singleton
   # 各種定数定義
   WIDTH = 503
   HEIGHT = 535
@@ -21,8 +23,12 @@ class MainWindow < Gosu::Window
     @kani1.set_angle(180)
     @ball = Ball.instance
     @ball.visible = false
+    @temp1 = Temp1.instance
+    @temp1.visible = true
+    @temp2 = Temp2.instance
+    @temp2.visible = false
 
-    @characters = [@kani1, @ball]
+    @characters = [@kani1, @ball, @temp1, @temp2]
 
     @font = Gosu::Font.new(32, name: "DelaGothicOne-Regular.ttf")
   end
@@ -38,6 +44,13 @@ class MainWindow < Gosu::Window
     @characters.each do |character|
       character.draw if character.visible
     end
+    @font.draw_text(@distance, 10, 10, 0, 1.0, 1.0, 0xff_ff0000) if @distance
+    end
+  
+  # キャラクタとボールの距離情報を画面上に表示する
+  def distance(distance)
+    puts "距離来た"
+    @distance = distance
   end
 end
 
@@ -45,5 +58,5 @@ end
 Server.new.run
 
 # メインウィンドウ表示
-window = MainWindow.new
+window = MainWindow.instance
 window.show
