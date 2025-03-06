@@ -7,12 +7,12 @@ i2c = I2C.new()             # I2Cシリアルインターフェース初期化
 vl53l0x = VL53L0X.new(i2c)  # 距離センサー（VL53L0X）
 vl53l0x.set_timeout(500)    # タイムアウト値設定（単位: ms）
 
+
 #ボールつかんでいたら1,つかんでいなかったら0
 ball=0;
 
 #ビジュアライザーの初期化
 HTTP.get( "http://192.168.6.32:3000/position?op=abs&x=400&y=435")
-
 
 class Kanirobo
 
@@ -26,6 +26,7 @@ class Kanirobo
     # 左モーター初期化（引数のGPIO番号は全ての蟹ロボで共通）
     @lm_pin1 = PWM.new(32,timer:1,channel:3) # 左モーターPIN1
     @lm_pin2 = PWM.new(33,timer:1,channel:4) # 左モーターPIN2
+
 
     @servo = PWM.new(27, timer:2, channel:5, frequency:50) # 右サーボモーター
     @servo2 = PWM.new(14, timer:2, channel:6, frequency:50) # 左サーボモーター
@@ -60,6 +61,7 @@ class Kanirobo
   def forword_longside
     p "forword_longside"
     # 左右モーター出力100%正回転
+
     @lm_pin1.duty(34)
     @lm_pin2.duty(0)
     @rm_pin1.duty(30)
@@ -78,6 +80,7 @@ class Kanirobo
     @rm_pin1.duty(30)
     @rm_pin2.duty(0)
     sleep 0.8 # 1.0秒間待機
+
     @lm_pin1.duty(100)
     @lm_pin2.duty(100)
     @rm_pin1.duty(100)
