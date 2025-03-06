@@ -271,6 +271,34 @@ if ball==1
 end
 #ここでボールが見つかってない場合の分岐
 #C->E
+if ball == 0
+  kanirobo.open_aram()
+  kanirobo.turn_left()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=stop&value=-90.0&target=Kani1")
+  kanirobo.forword_shortside()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=forword_shortside&value=0.0&target=Kani1")
+  kanirobo.forword_shortside()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=forword_shortside&value=0.0&target=Kani1")
+  kanirobo.turn_left()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=stop&value=-90.0&target=Kani1")
+  kanirobo.forword_longside()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=forword_longside&value=0.0&target=Kani1")
+  kanirobo.stop()
+  kanirobo.close_aram()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=ServoClosed&value=0.0&target=Kani1")
+  kanirobo.turn_left()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=stop&value=-90.0&target=Kani1")
+  kanirobo.forword_shortside()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=forword_shortside&value=0.0&target=Kani1")
+  kanirobo.forword_shortside()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=forword_shortside&value=0.0&target=Kani1")
+  kanirobo.turn_left()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=stop&value=-90.0&target=Kani1")
+  kanirobo.forword_longside()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=forword_longside&value=0.0&target=Kani1")
+  kanirobo.forword_longside()
+  HTTP.get( "http://192.168.6.32:3000/movement?string=forword_longside&value=0.0&target=Kani1")
+end
 
 #C->GOAL
 
