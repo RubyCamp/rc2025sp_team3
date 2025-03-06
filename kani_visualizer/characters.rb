@@ -7,7 +7,7 @@ class Character
   include Singleton
 
   # インスタンス外から設定変更を許可するアクセサ定義
-  attr_accessor :x, :y, :angle, :image, :visible
+  attr_accessor :x, :y, :angle, :image, :visible, :distance
 
   # コンストラクタ
   def initialize
@@ -56,12 +56,12 @@ class Character
     #when 'turn_left'
     #  add_angle(-90)
     when 'forword_shortside'
-      cos = Math.cos(@radian) * 71.25
-      sin = Math.sin(@radian) * 71.25
+      cos = Math.cos(@radian) * 25.87
+      sin = Math.sin(@radian) * 25.87
       add_pos(cos, sin)
     when 'forword_longside'
-      cos = Math.cos(@radian) * 71.25
-      sin = Math.sin(@radian) * 71.25
+      cos = Math.cos(@radian) * 25.87
+      sin = Math.sin(@radian) * 25.87
       add_pos(cos, sin)
     when 'stop'
       add_pos(0,0)

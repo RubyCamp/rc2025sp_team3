@@ -136,6 +136,7 @@ class Server
     #@server.mount('/angle', AngleServlet)
     @server.mount('/visible', VisibleServlet)
     @server.mount('/movement', MovementServlet)
+    @server.mount('/distance', DistanceServlet)
 
     # アプリケーション終了時の処理（サーバ停止）
     trap('INT') { @server.shutdown }
